@@ -3,181 +3,300 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Roost & Roam Farms | Washington, Georgia</title>
   <meta name="description" content="Roost & Roam Farms in Washington, Georgia offers free range eggs, freeze-dried Georgia fruits and vegetables, and freeze-dried candy." />
-  <link rel="stylesheet" href="style.css" />
 
   <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Georgia, serif;
-      color: #2b241d;
-      background: #f7f3eb;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #2f261d;
+      background: #f6f0e4;
     }
 
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
     .container {
-      width: min(1100px, 92%);
-      margin: auto;
+      width: min(1120px, 92%);
+      margin: 0 auto;
     }
 
     .site-header {
-      background: #f7f3eb;
-      padding: 18px 0;
-      border-bottom: 1px solid #ddd;
+      background: rgba(246, 240, 228, 0.96);
+      border-bottom: 1px solid #d8c7a8;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 20;
+      backdrop-filter: blur(6px);
     }
 
     .nav {
+      min-height: 108px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
+    }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
     }
 
     .logo {
+      width: 120px;
       height: 120px;
-      width: auto;
+      object-fit: contain;
+      margin: 8px 0;
+    }
+
+    .brand-text {
+      font-weight: bold;
+      font-size: 1.25rem;
+      letter-spacing: .04em;
+      color: #33261d;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      align-items: center;
+      justify-content: flex-end;
+      font-family: Arial, sans-serif;
+      font-size: .9rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: bold;
     }
 
     nav a {
-      margin-left: 24px;
       text-decoration: none;
-      color: #2b241d;
-      font-weight: bold;
-      letter-spacing: 1px;
+      color: #3b2d22;
     }
 
     .hero {
-      position: relative;
-      background-image: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)), url('hero-flock.jpg');
+      min-height: 74vh;
+      display: grid;
+      place-items: center;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(20, 14, 9, .75), rgba(20, 14, 9, .45), rgba(20, 14, 9, .2)),
+        url("field-roaming.jpg");
       background-size: cover;
       background-position: center;
-      color: white;
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      text-align: left;
     }
 
     .hero-content {
-      max-width: 650px;
-      padding: 80px 0;
+      padding: 90px 0;
+      max-width: 720px;
+      margin-right: auto;
     }
 
-    .hero h1 {
-      font-size: clamp(3rem, 6vw, 5rem);
-      margin-bottom: 10px;
+    .eyebrow {
+      margin: 0 0 14px;
+      font-family: Arial, sans-serif;
+      color: #e9c88e;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: .82rem;
+      font-weight: bold;
+    }
+
+    .eyebrow.dark { color: #8b5e32; }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.3rem, 8vw, 6.7rem);
+      line-height: .95;
+      letter-spacing: .015em;
+      text-shadow: 0 4px 20px rgba(0,0,0,.35);
+    }
+
+    h2 {
+      margin: 0 0 22px;
+      font-size: clamp(2.1rem, 5vw, 3.5rem);
+      line-height: 1.05;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      font-size: 1.6rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.75;
     }
 
     .tagline {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
+      margin: 24px 0 34px;
+      font-size: clamp(1.2rem, 3vw, 1.75rem);
+      color: #f7ead2;
     }
 
     .button {
       display: inline-block;
-      background: #556b2f;
+      background: #596b36;
       color: white;
-      padding: 14px 28px;
+      padding: 15px 26px;
+      border-radius: 999px;
       text-decoration: none;
-      border-radius: 4px;
+      font-family: Arial, sans-serif;
       font-weight: bold;
+      letter-spacing: .05em;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
 
-    .section {
-      padding: 80px 0;
-    }
+    .section { padding: 86px 0; }
 
     .two-column {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 48px;
       align-items: center;
     }
 
     .feature-image {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 28px;
+      border: 5px solid #d8c7a8;
+      box-shadow: 0 18px 45px rgba(0,0,0,.16);
     }
 
-    .gallery-grid {
+    .products { background: #e7d8bf; }
+    .center { text-align: center; }
+
+    .product-grid {
+      margin-top: 42px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: #fffaf0;
+      padding: 34px;
+      border-radius: 24px;
+      border: 1px solid #cbb58e;
+      box-shadow: 0 12px 30px rgba(54,37,22,.12);
+    }
+
+    .gallery { background: #f9f3e8; }
+
+    .gallery-grid {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
     .gallery-grid img {
       width: 100%;
-      height: 280px;
+      height: 285px;
       object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.15);
+      border-radius: 20px;
+      border: 3px solid #d8c7a8;
+      box-shadow: 0 10px 28px rgba(0,0,0,.14);
+      background: #e7d8bf;
     }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
+    .orchard { background: #f1e6d4; }
+    .narrow { max-width: 820px; }
 
-    .product-card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,.08);
-      text-align: center;
-    }
-
-    .product-card h3 {
-      margin-top: 0;
-    }
-
-    .center {
-      text-align: center;
-    }
-
-    .contact-box {
+    .contact {
       background: #2f3b1f;
+      color: #f8ecd7;
+    }
+
+    .contact-box { max-width: 820px; }
+    .muted { color: #dfcba7; }
+
+    .email-button {
+      display: inline-block;
+      margin-top: 16px;
+      background: #8b5e32;
       color: white;
-      padding: 60px;
-      border-radius: 16px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      letter-spacing: .04em;
     }
 
     footer {
+      background: #201710;
+      color: #d8c7a8;
       text-align: center;
-      padding: 30px;
-      background: #1d1813;
-      color: #eee;
+      padding: 28px;
     }
 
-    @media (max-width: 800px) {
-      .two-column {
-        grid-template-columns: 1fr;
-      }
+    footer p { margin: 0; font-size: .95rem; }
 
+    @media (max-width: 840px) {
       .nav {
         flex-direction: column;
-      }
-
-      nav a {
-        margin: 0 10px;
+        padding: 12px 0 18px;
       }
 
       .logo {
-        height: 90px;
+        width: 104px;
+        height: 104px;
       }
+
+      .brand-text { display: none; }
+
+      nav {
+        justify-content: center;
+        gap: 16px;
+        font-size: .78rem;
+      }
+
+      .hero {
+        min-height: 68vh;
+        text-align: center;
+        background:
+          linear-gradient(rgba(20, 14, 9, .58), rgba(20, 14, 9, .58)),
+          url("field-roaming.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero-content {
+        margin: 0 auto;
+        padding: 70px 0;
+      }
+
+      .two-column,
+      .product-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section { padding: 64px 0; }
+
+      .gallery-grid img { height: 320px; }
     }
   </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container nav">
-      <img class="logo" src="logo.png" alt="Roost & Roam Farms Logo" />
+      <a class="logo-link" href="#">
+        <img class="logo" src="logo.png" alt="Roost & Roam Farms Logo" />
+        <span class="brand-text">Roost & Roam Farms</span>
+      </a>
 
       <nav>
         <a href="#about">About</a>
@@ -190,17 +309,20 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-content">
-        <p>Washington, Georgia</p>
-        <h1>Roost & Roam Farms</h1>
-        <p class="tagline">Free Range • Farm Fresh • Georgia Made</p>
-        <a class="button" href="#products">See What We Offer</a>
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow">Washington, Georgia</p>
+          <h1>Roost & Roam Farms</h1>
+          <p class="tagline">Free Range • Farm Fresh • Georgia Made</p>
+          <a class="button" href="#products">See What We Offer</a>
+        </div>
       </div>
     </section>
 
     <section id="about" class="section about">
       <div class="container two-column">
         <div>
+          <p class="eyebrow dark">Small Farm • Local Goods</p>
           <h2>Simple farm goods with Southern roots.</h2>
 
           <p>
@@ -209,25 +331,24 @@
           </p>
 
           <p>
-            We raise free range chickens for fresh eggs, offer freeze-dried fruits and
-            vegetables sourced from Georgia farms, and make fun freeze-dried candy treats.
+            We raise free range chickens for fresh eggs, offer freeze-dried fruits and vegetables
+            sourced from Georgia farms, and make fun freeze-dried candy treats.
           </p>
 
           <p>
-            Our orchard is growing too. In the years ahead, we look forward to offering
-            seasonal fruit and orchard-made goods from our own trees.
+            Our orchard is growing too. In the years ahead, we look forward to offering seasonal
+            fruit and orchard-made goods from our own trees.
           </p>
         </div>
 
-        <div>
-          <img class="feature-image" src="family-flock.jpg" alt="Family with chickens" />
-        </div>
+        <img class="feature-image" src="dog-and-flock.jpg" alt="Dog walking with free range chickens" />
       </div>
     </section>
 
     <section id="products" class="section products">
       <div class="container">
-        <h2 class="center">Farm Fresh Goods & Local Favorites</h2>
+        <p class="eyebrow dark center">What We Offer</p>
+        <h2 class="center">Farm fresh goods and local favorites.</h2>
 
         <div class="product-grid">
           <article class="product-card">
@@ -237,12 +358,12 @@
 
           <article class="product-card">
             <h3>Freeze-Dried Produce</h3>
-            <p>Georgia-grown fruits and vegetables preserved for flavor and convenience.</p>
+            <p>Fruits and vegetables sourced from Georgia farms and preserved for flavor and convenience.</p>
           </article>
 
           <article class="product-card">
             <h3>Freeze-Dried Candy</h3>
-            <p>Crunchy sweet treats perfect for gifts, markets, and family snacks.</p>
+            <p>Crunchy sweet treats that are fun for markets, gifts, and family snacks.</p>
           </article>
         </div>
       </div>
@@ -250,33 +371,40 @@
 
     <section id="gallery" class="section gallery">
       <div class="container">
-        <h2 class="center">Life Around the Farm</h2>
+        <p class="eyebrow dark center">Around the Farm</p>
+        <h2 class="center">Life at Roost & Roam</h2>
 
         <div class="gallery-grid">
-          <img src="close-hen.jpg" alt="Brown hen close-up" />
-          <img src="watermelon-chickens.jpg" alt="Chickens eating watermelon" />
+          <img src="dog-and-flock.jpg" alt="Dog with free range chickens" />
+          <img src="field-roaming.jpg" alt="Free range flock roaming in pasture" />
+          <img src="brown-hen-close.jpg" alt="Brown hen close-up" />
+          <img src="funny-hen.jpg" alt="Curious chicken close-up" />
           <img src="grey-hen.jpg" alt="Grey fluffy hen" />
-          <img src="roaming-flock.jpg" alt="Free range flock" />
-          <img src="curious-hen.jpg" alt="Funny chicken close-up" />
-          <img src="field-flock.jpg" alt="Flock in the pasture" />
+          <img src="watermelon-time.jpg" alt="Chickens enjoying watermelon" />
         </div>
+      </div>
+    </section>
+
+    <section class="section orchard">
+      <div class="container narrow">
+        <p class="eyebrow dark center">Growing for the Future</p>
+        <h2 class="center">Our orchard is taking root.</h2>
+        <p class="center">
+          While our trees are still getting established, the orchard is an important part of our future.
+          We are excited to grow fresh fruit and seasonal farm products for our community in the years ahead.
+        </p>
       </div>
     </section>
 
     <section id="contact" class="section contact">
       <div class="container contact-box center">
+        <p class="eyebrow center">Find Us</p>
         <h2>Roost & Roam Farms</h2>
         <p>Washington, Georgia</p>
-        <p>
-          Contact us for egg and freeze dried product availability, local pickup information,
-          and upcoming farm products.
+        <p class="muted">
+          Contact us for egg availability, local pickup information, and upcoming farm products.
         </p>
-
-        <p>
-          <a style="color:white;" href="mailto:hello@roostandroamfarms.com">
-            hello@roostandroamfarms.com
-          </a>
-        </p>
+        <a class="email-button" href="mailto:hello@roostandroamfarms.com">Email Us</a>
       </div>
     </section>
   </main>

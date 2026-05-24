@@ -1,0 +1,1 @@
+Upload index.html and all image files to the root of your GitHub repository. Replace the existing index.html. Netlify will redeploy automatically.
