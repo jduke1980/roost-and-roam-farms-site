@@ -1,0 +1,11 @@
+Add these two cards inside your existing <div class="art-grid"> section:
+
+<article class="art-card">
+  <img src="art-eagle-flag.jpg" alt="Eagle and American flag etching" />
+  <p>Eagle & Flag</p>
+</article>
+
+<article class="art-card">
+  <img src="art-lightning-swamp.jpg" alt="Lightning over swamp etching" />
+  <p>Lightning Swamp</p>
+</article>
